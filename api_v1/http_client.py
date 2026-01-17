@@ -1,6 +1,8 @@
 from aiohttp import ClientSession
 from .models.schemas import Crypto
 
+from async_lru import alru_cache
+
 class HttpClient:
     def __init__(self, base_url: str, api_key: str):
         self._session = ClientSession(
@@ -11,11 +13,14 @@ class HttpClient:
         )
 
 class CMCHttpClient(HttpClient):
+
+    @alru_cache()
     async def get_list_of_currency(self):
         async with self._session.get("/v1/cryptocurrency/listings/latest") as resp:
             result = await resp.json()
             return result["data"]
 
+    @alru_cache()
     async def get_currency_from_id(self, currency_id: int) -> Crypto:
         async with self._session.get("/v1/cryptocurrency/quotes/latest", params={"id": currency_id}) as resp:
             result = await resp.json()
@@ -23,9 +28,9 @@ class CMCHttpClient(HttpClient):
             crypto = ({
                 "id": result["id"],
                 "name": result["name"],
-                "symbol": result["symbol"],
                 "price": result["quote"]["USD"]["price"],
-                "last_updated": result["quote"]["USD"]["last_updated"],
+                "percent_change_24h": result["quote"]["USD"]["percent_change_24h"],
+                "market_cap": result["quote"]["USD"]["market_cap"],
             })
             crypto_out = Crypto(**crypto)
             return crypto_out
