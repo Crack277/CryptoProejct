@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from core.config import settings
+from .config import settings
 from .init import cmc_client
 
 router = APIRouter(prefix=settings.api_key.prefix)

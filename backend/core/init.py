@@ -1,4 +1,4 @@
-from core.config import settings
+from .config import settings
 from .http_client import CMCHttpClient
 
 cmc_client = CMCHttpClient(
