@@ -35,14 +35,8 @@ npm install
 ## Настройка
 1. **Конфигурация .env_example**
 ```bash
-DB_USERNAME="postgres"
-DB_PASSWORD="postgres"
-DB_HOST="localhost"
-DB_PORT=5432
-DB_NAME="postgres"
-DB_ECHO=true
 API_KEY__CMC_API_KEY="123"
-# CMC_API_KEY - сгенерируйте свой, ссылка к источнику прилагается
+# Сгенерируйте свой, ссылка к источнику прилагается
 ```
 Источник: https://pro.coinmarketcap.com/login/
 
