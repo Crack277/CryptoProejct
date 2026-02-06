@@ -1,43 +1,62 @@
-import {Card} from "antd";
+import { Card } from "antd";
 import numberWithCommas from "../utils.js";
-
+import "./CryptocurrencyCard.css";
 
 function CryptocurrencyCard(props) {
-  const { currency } = props
+  const { currency } = props;
 
-  const priceChangeColor = currency.percent_change_24h > 0 ? 'text-green-400' : 'text-red-400'
-  const formattedPrice = numberWithCommas(currency.price.toFixed(2))
-  const formattedMarketCap = numberWithCommas(Math.round(currency.market_cap/1_000_000_000))
-  const priceChange = Math.round(100 * currency.percent_change_24h) / 100
+  const priceChange = Math.round(100 * currency.percent_change_24h) / 100;
+  const formattedPrice = numberWithCommas(currency.price.toFixed(2));
+  const formattedMarketCap = numberWithCommas(Math.round(currency.market_cap / 1_000_000_000));
 
-  const price = Math.round(currency.price)
+  const priceChangeClass = priceChange > 0 ? 'change-positive' : 'change-negative';
 
   return (
-    <div>
+    <div className="p-4">
       <Card
         title={
           <div className="flex items-center gap-3">
-            <img src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${currency.id}.png`} alt='logo' width="50"/>
-            <p className="text-3xl">{currency.name}</p>
+            <img
+              src={`https://s2.coinmarketcap.com/static/img/coins/64x64/${currency.id}.png`}
+              alt='logo'
+              className="crypto-logo"
+            />
+            <p className="crypto-name">{currency.name}</p>
           </div>
         }
         bordered={false}
+        className="crypto-card"
         style={{
           width: 700,
-          height: 340,
-          'box-shadow': '0 3px 10px rgb(0,0,0,0.2)',
+          height: 500,
         }}
-        className="text-2xl"
       >
-        <p>Текущая цена: {formattedPrice}$</p>
-        <span>Изменение цены за 24 часа: </span>
-        <span className={priceChangeColor}>
-        {priceChange}%
-      </span>
-        <p>Текущая капитализация: ${formattedMarketCap}B</p>
+        <div className="crypto-content">
+          {/* Текущая цена */}
+          <div className="data-field">
+            <span className="data-label">Текущая цена</span>
+            <span className="data-value price-value">${formattedPrice}</span>
+          </div>
+
+          {/* Изменение цены */}
+          <div className="data-field">
+            <div className="price-change-container">
+              <span className="change-label">Изменение за 24 часа:</span>
+              <span className={`change-value ${priceChangeClass}`}>
+                {priceChange > 0 ? '+' : ''}{priceChange}%
+              </span>
+            </div>
+          </div>
+
+          {/* Капитализация */}
+          <div className="data-field">
+            <span className="data-label">Рыночная капитализация</span>
+            <span className="data-value market-cap-value">${formattedMarketCap}B</span>
+          </div>
+        </div>
       </Card>
     </div>
-  )
+  );
 }
 
-export default CryptocurrencyCard
+export default CryptocurrencyCard;

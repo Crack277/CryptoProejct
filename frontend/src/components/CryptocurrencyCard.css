@@ -1,0 +1,184 @@
+/* CryptocurrencyCard.css */
+
+/* Основные стили карточки */
+.crypto-card {
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid #e5e7eb !important;
+    font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow: hidden !important;
+}
+
+.crypto-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+    border-color: #d1d5db !important;
+}
+
+/* Заголовок карточки */
+.crypto-header {
+    padding: 20px 24px 16px !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    background: linear-gradient(to right, #f9fafb, #ffffff) !important;
+}
+
+.crypto-logo {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.crypto-logo:hover {
+    transform: scale(1.05) !important;
+}
+
+.crypto-name {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    letter-spacing: -0.025em !important;
+    background: linear-gradient(135deg, #111827 0%, #374151 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Контент карточки */
+.crypto-content {
+    padding: 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    background: #ffffff !important;
+}
+
+/* Стили для полей данных */
+.data-field {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    transition: all 0.2s ease !important;
+}
+
+.data-field:hover {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    transform: translateX(2px) !important;
+}
+
+.data-label {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+.data-value {
+    font-family: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.025em !important;
+}
+
+/* Цена */
+.price-value {
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    font-size: 1.75rem !important;
+    text-shadow: 0 1px 2px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Изменение цены */
+.price-change-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.change-label {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    color: #475569 !important;
+    font-weight: 500 !important;
+}
+
+.change-value {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    letter-spacing: 0.025em !important;
+    transition: all 0.2s ease !important;
+}
+
+.change-positive {
+    color: #059669 !important;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%) !important;
+    border: 1px solid #34d399 !important;
+}
+
+.change-positive:hover {
+    background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%) !important;
+    transform: translateY(-1px) !important;
+}
+
+.change-negative {
+    color: #dc2626 !important;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+    border: 1px solid #f87171 !important;
+}
+
+.change-negative:hover {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Капитализация */
+.market-cap-value {
+    color: #7c3aed !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 1px 2px rgba(124, 58, 237, 0.1) !important;
+}
+
+/* Декоративные элементы */
+.crypto-card::before {
+    content: '';
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #10b981) !important;
+    border-radius: 16px 16px 0 0 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .crypto-name {
+        font-size: 1.5rem !important;
+    }
+
+    .data-value {
+        font-size: 1.25rem !important;
+    }
+
+    .price-value {
+        font-size: 1.5rem !important;
+    }
+}
